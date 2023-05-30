@@ -1,0 +1,32 @@
+.country-container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.country-card {
+  background-color: white;
+  margin: 10px;
+  min-width: 500px;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.see-more-btn {
+  text-decoration: none;
+}
+
+.loading-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
