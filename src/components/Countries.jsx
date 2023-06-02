@@ -8,21 +8,33 @@ const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [modal, setModal] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [seach, setSearch] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('https://restcountries.com/v3.1/all');
       setCountries(response.data);
-      console.log(response.data);
     };
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `https://restcountries.com/v3.1/name/${seach}`
+      );
+      setCountries(response.data);
+    };
+    if (seach) {
+      fetchData();
+    }
+  }, [seach]);
+
   if (!countries || countries.length === 0) {
     return (
       <div className="loading-container">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only"></span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only"></span>
         </div>
       </div>
     );
@@ -33,15 +45,27 @@ const Countries = () => {
     setSelectedCountry(country);
   }
 
+  function handleChange({ target }) {
+    setSearch(target.value);
+  }
+
   return (
     <>
       <div className="container">
+        <div>
+          <input
+            type="text"
+            className="form-control m-2"
+            onChange={handleChange}
+            placeholder="Find a country by name"
+          />
+        </div>
         <Modal modal={modal} setModal={setModal} country={selectedCountry} />
         <div className="country-container">
           {countries.map((c) => (
             <div key={c.name.common} className="country-card">
               <h2>{c.name.common}</h2>
-              <div class="btn-container">
+              <div className="btn-container">
                 <button
                   className="btn btn-success"
                   onClick={() => handleClick(c)}

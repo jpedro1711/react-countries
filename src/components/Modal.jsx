@@ -2,7 +2,6 @@ import React from 'react';
 import './Modal.css';
 
 const Modal = ({ modal, setModal, country }) => {
-  console.log(country);
   if (modal === true)
     return (
       <div className="county-card" style={{ width: '100%', height: '100%' }}>

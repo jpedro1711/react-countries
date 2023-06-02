@@ -14,7 +14,6 @@ const Country = () => {
         `https://restcountries.com/v3.1/name/${name}`
       );
       setCountry(response.data);
-      console.log(response.data);
     };
     fetchData();
   }, []);
@@ -22,8 +21,8 @@ const Country = () => {
   if (!country || country.length === 0) {
     return (
       <div className="loading-container">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only"></span>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only"></span>
         </div>
       </div>
     );
