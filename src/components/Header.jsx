@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <nav className="navbar navbar-light bg-light">
-        <span className="navbar-brand mb-0 h1 p-2">CountryGo</span>
+        <span className="navbar-brand mb-0 h1 p-2">React countries</span>
         <div className="link-container">
           <Link to="/" className="link">
             About
